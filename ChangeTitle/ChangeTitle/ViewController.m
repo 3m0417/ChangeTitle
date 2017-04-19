@@ -10,8 +10,11 @@
 
 @interface ViewController () <UITextFieldDelegate>
 
-@property (nonatomic, strong) UITextField *txtTitle;
-@property (nonatomic, strong) UIButton    *btnUpdateTitle;
+@property (nonatomic, weak) UITextField *txtTitle;
+@property (nonatomic, weak) UIButton    *btnUpdateTitle;
+@property (nonatomic, weak) UINavigationBar *navigationBar;
+@property (nonatomic, weak) UINavigationItem *navigationItem;
+
 
 @end
 
@@ -38,7 +41,16 @@
     [self.view addSubview:btnUpdateTitle];
     self.btnUpdateTitle = btnUpdateTitle;
     
-    [self.navigationItem setTitle:@"Title"];
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] init];
+    [navBar setFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+    self.navigationBar = navBar;
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Title"];
+    self.navigationItem = navItem;
+    [navBar setItems:@[ navItem]];
+    [self.view addSubview:navBar];
+    
     
 }
 
