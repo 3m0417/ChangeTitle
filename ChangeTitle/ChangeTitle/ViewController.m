@@ -24,22 +24,9 @@
     [super viewDidLoad];
     
     UITextField *txtTitle = [[UITextField alloc]
-                             initWithFrame:CGRectMake(20, 100, 280, 30)];
+                             initWithFrame:CGRectMake(0, 0, 200, 30)];
     txtTitle.delegate = self;
     txtTitle.placeholder = @"Enter title";
-    [self.view addSubview:txtTitle];
-    self.txtTitle = txtTitle;
-    
-    UIButton *btnUpdateTitle = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [btnUpdateTitle setFrame:CGRectMake(20, 160, 280, 40)];
-    [btnUpdateTitle setTitle:@"Update Title"
-                    forState:(UIControlStateNormal)];
-    [btnUpdateTitle setBackgroundColor:[UIColor darkGrayColor]];
-    [btnUpdateTitle addTarget:self
-                       action:@selector(onPressUpdateTitle:)
-             forControlEvents:(UIControlEventTouchUpInside)];
-    [self.view addSubview:btnUpdateTitle];
-    self.btnUpdateTitle = btnUpdateTitle;
     
     
     UINavigationBar *navBar = [[UINavigationBar alloc] init];
@@ -47,6 +34,7 @@
     self.navigationBar = navBar;
     
     UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Title"];
+    navItem.titleView = txtTitle;
     self.navigationItem = navItem;
     [navBar setItems:@[ navItem]];
     [self.view addSubview:navBar];
